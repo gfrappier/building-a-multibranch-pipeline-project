@@ -5,7 +5,9 @@ echo 'production in the local "build" directory (i.e. within the appropriate'
 echo 'subdirectory of "/var/jenkins_home/workspace/"), correctly bundles React'
 echo 'in production mode and optimizes the build for the best performance.'
 set -x
+npm version major
 npm run build
+npm pack
 set +x
 
 echo 'The following "npm" command downloads and installs the npm serve module'
@@ -15,7 +17,7 @@ echo '"/var/jenkins_home/workspace/"), which means that this module should not'
 echo 'need to be downloaded after this Pipeline''s initial run for a given'
 echo 'branch.'
 set -x
-npm install serve
+#npm install serve
 set +x
 
 echo 'The following "serve" command runs the npm serve module (downloaded'
@@ -28,9 +30,9 @@ echo 'is followed by another command that retrieves the process ID (PID) value'
 echo 'of the previously run process (i.e. "serve") and writes this value to'
 echo 'the file ".pidfile".'
 set -x
-./node_modules/serve/bin/serve.js -c 0 -s build &
-sleep 1
-echo $! > .pidfile
+#./node_modules/serve/bin/serve.js -c 0 -s build &
+#sleep 1
+#echo $! > .pidfile
 set +x
 
 echo 'Now...'

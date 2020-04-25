@@ -9,9 +9,12 @@ echo 'is followed by another command that retrieves the process ID (PID) value'
 echo 'of the previously run process (i.e. "npm start") and writes this value to'
 echo 'the file ".pidfile".'
 set -x
-npm start &
-sleep 1
-echo $! > .pidfile
+#npm start &
+npm version prerelease
+npm run build
+npm pack
+#sleep 1
+#echo $! > .pidfile
 set +x
 
 echo 'Now...'
