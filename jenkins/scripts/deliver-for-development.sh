@@ -10,7 +10,7 @@ echo 'of the previously run process (i.e. "npm start") and writes this value to'
 echo 'the file ".pidfile".'
 set -x
 #npm start &
-npm version prerelease
+npm version patch
 npm run build
 npm pack
 #sleep 1
