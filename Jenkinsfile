@@ -39,7 +39,6 @@ pipeline {
     options {
         // Stash one pipeline run until successful    
         preserveStashes() 
-        [[$class: 'JiraProjectProperty'], parameters([booleanParam(defaultValue: false, description: 'Performs a dry run of the pipeline', name: 'dryrun')])]
         // or stash the last 5 builds
         //preserveStashes(buildCount: 5) 
     }
