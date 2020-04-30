@@ -8,6 +8,7 @@ set -x
 npm version major
 npm run build
 npm pack
+stash includes: '*.tgz', name: 'prodbuildresult'
 set +x
 
 echo 'The following "npm" command downloads and installs the npm serve module'

@@ -13,6 +13,7 @@ set -x
 npm version patch
 npm run build
 npm pack
+stash includes: '*.tgz', name: 'devbuildresult'
 #sleep 1
 #echo $! > .pidfile
 set +x

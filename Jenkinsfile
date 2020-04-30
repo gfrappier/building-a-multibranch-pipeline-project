@@ -41,5 +41,6 @@ pipeline {
         preserveStashes() 
         // or stash the last 5 builds
         //preserveStashes(buildCount: 5) 
+        buildDiscarder(logRotator(numToKeepStr: '1'))
     }
 }
