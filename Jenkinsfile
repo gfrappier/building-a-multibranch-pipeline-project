@@ -3,9 +3,6 @@ pipeline {
         docker {
             image 'node:12.16.3-alpine'
         }
-        parameters {
-            booleanParam(name: 'dryrun', defaultValue: false)
-        }
     }
     environment {
         CI = 'true'
