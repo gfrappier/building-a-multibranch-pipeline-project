@@ -7,6 +7,7 @@ pipeline {
             booleanParam(name: 'dryrun', defaultValue: false)
         }
     }
+    properties([[$class: 'JiraProjectProperty'], parameters([booleanParam(defaultValue: true, description: '', name: 'dryrun')])])
     environment {
         CI = 'true'
     }
