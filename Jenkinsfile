@@ -17,6 +17,7 @@ pipeline {
             steps {
                 sh 'npm run build'
                 sh 'npm pack'
+                writeFile file: 'Test.txt', text: 'This is a test file'
                 archiveArtifacts '*.tgz'
             }
         }
