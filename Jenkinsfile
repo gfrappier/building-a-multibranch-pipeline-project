@@ -35,4 +35,11 @@ pipeline {
             }
         }
     }
+
+    options {
+    // Stash one pipeline run until successful    
+    preserveStashes() 
+    // or stash the last 5 builds
+    //preserveStashes(buildCount: 5) 
+}
 }
