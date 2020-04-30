@@ -7,7 +7,6 @@ pipeline {
             booleanParam(name: 'dryrun', defaultValue: false)
         }
     }
-    properties([[$class: 'JiraProjectProperty'], parameters([booleanParam(defaultValue: true, description: '', name: 'dryrun')])])
     environment {
         CI = 'true'
     }
@@ -41,9 +40,10 @@ pipeline {
     }
 
     options {
-    // Stash one pipeline run until successful    
-    preserveStashes() 
-    // or stash the last 5 builds
-    //preserveStashes(buildCount: 5) 
-}
+        // Stash one pipeline run until successful    
+        preserveStashes() 
+        [[$class: 'JiraProjectProperty'], parameters([booleanParam(defaultValue: false, description: 'Performs a dry run of the pipeline', name: 'dryrun')])]
+        // or stash the last 5 builds
+        //preserveStashes(buildCount: 5) 
+    }
 }
