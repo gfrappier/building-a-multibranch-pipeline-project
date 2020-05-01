@@ -25,7 +25,8 @@ pipeline {
         }
         stage('Run Snyk') {
             when {
-                branch 'master' || 'production'
+                expression { return branch 'master' || branch 'production' }
+                //branch 'master' || 'production'
             }
             steps {
                 sh './jenkins/scripts/run-snyk.sh'
