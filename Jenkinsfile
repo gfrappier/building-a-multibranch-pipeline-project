@@ -29,6 +29,7 @@ pipeline {
             }
             steps {
                 sh './jenkins/scripts/deliver-for-development.sh'
+                archiveArtifacts '*.tgz'
             }
         }
         stage('Deploy Public') {
@@ -37,6 +38,7 @@ pipeline {
             }
             steps {
                 sh './jenkins/scripts/deploy-for-production.sh'
+                archiveArtifacts '*.tgz'
             }
         }
     }
