@@ -25,11 +25,10 @@ pipeline {
         }
         stage('Run Snyk') {
             when {
-                branch 'master' 
                 branch 'production'
             }
             steps {
-                sh './jenkins/scripts/run-snyk.sh'
+                sh './jenkins/scripts/snyk.sh'
             }
         }
         stage('Run Certifiers') {
@@ -37,7 +36,7 @@ pipeline {
                 branch 'production'
             }
             steps {
-                sh './jenkins/scripts/run-certifiers.sh'
+                sh './jenkins/scripts/certifiers.sh'
             }
         }
         stage('Deploy NPM Private') {
