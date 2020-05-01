@@ -1,3 +1,3 @@
 #!/usr/bin/env sh
 
-echo Running certifiers on code
+echo 'Running certifiers on code'

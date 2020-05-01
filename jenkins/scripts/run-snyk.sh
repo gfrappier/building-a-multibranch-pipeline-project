@@ -1,3 +1,3 @@
 #!/usr/bin/env sh
 
-echo Running Snyk on code
+echo 'Running Snyk on code'
