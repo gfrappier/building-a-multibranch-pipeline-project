@@ -23,6 +23,22 @@ pipeline {
                 sh './jenkins/scripts/test.sh'
             }
         }
+        stage('Run Snyk') {
+            when {
+                branch 'master'
+            }
+            steps {
+                sh './jenkins/scripts/run-snyk.sh'
+            }
+        }
+        stage('Run Certifiers') {
+            when {
+                branch 'production'
+            }
+            steps {
+                sh './jenkins/scripts/run-certifiers.sh'
+            }
+        }
         stage('Deploy NPM Private') {
             when {
                 branch 'development'
@@ -40,7 +56,6 @@ pipeline {
             steps {
                 sh './jenkins/scripts/deploy-for-production.sh'
                 sh './jenkins/scripts/run-snyk.sh'
-                sh './jenkins/scripts/run-certifiers.sh'
                 archiveArtifacts '*.tgz'
             }
         }
