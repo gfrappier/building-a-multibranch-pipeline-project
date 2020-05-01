@@ -16,9 +16,6 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'npm run build'
-                sh 'npm pack'
-                writeFile file: 'Test.txt', text: 'This is a test file'
-                archiveArtifacts '*.tgz'
             }
         }
         stage('Test') {
@@ -26,7 +23,7 @@ pipeline {
                 sh './jenkins/scripts/test.sh'
             }
         }
-        stage('Deliver for development') {
+        stage('Deploy Private') {
             when {
                 branch 'development'
             }
@@ -34,7 +31,7 @@ pipeline {
                 sh './jenkins/scripts/deliver-for-development.sh'
             }
         }
-        stage('Deploy for production') {
+        stage('Deploy Public') {
             when {
                 branch 'production'
             }
