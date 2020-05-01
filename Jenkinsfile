@@ -8,9 +8,14 @@ pipeline {
         CI = 'true'
     }
     stages {
-        stage('Build') {
+        stage('Install') {
             steps {
                 sh 'npm install'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'npm run build'
             }
         }
         stage('Test') {
@@ -18,21 +23,31 @@ pipeline {
                 sh './jenkins/scripts/test.sh'
             }
         }
-        stage('Deliver for development') {
+        stage('Deploy Private') {
             when {
                 branch 'development'
             }
             steps {
                 sh './jenkins/scripts/deliver-for-development.sh'
+                archiveArtifacts '*.tgz'
             }
         }
-        stage('Deploy for production') {
+        stage('Deploy Public') {
             when {
                 branch 'production'
             }
             steps {
                 sh './jenkins/scripts/deploy-for-production.sh'
+                archiveArtifacts '*.tgz'
             }
         }
+    }
+
+    options {
+        // Stash one pipeline run until successful    
+        preserveStashes() 
+        // or stash the last 5 builds
+        //preserveStashes(buildCount: 5) 
+        buildDiscarder(logRotator(numToKeepStr: '1'))
     }
 }
