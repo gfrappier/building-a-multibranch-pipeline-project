@@ -1,6 +1,3 @@
-import coveo.pipeline.Constants
-import coveo.pipeline.CustomMessages
-
 pipeline {
     agent {
         docker {
@@ -15,9 +12,8 @@ pipeline {
             steps {
                 //sh 'npm install'
                 script{
-                    //def test = load("./jenkins/scripts/Messages.groovy")
-                    def maintainer = Constants.DEFAULT_MAINTAINER_NAME
-                    echo maintainer
+                    def constants = load("./jenkins/scripts/Constants.groovy")
+                    echo constants.SingleMessage
                     //echo msg.Msg1
                 }
             }
