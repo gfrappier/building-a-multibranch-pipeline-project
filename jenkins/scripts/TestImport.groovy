@@ -1,4 +1,4 @@
-def constants = load 'Constants.groovy'
+def constants = load './jenkins/scripts/Constants.groovy'
 
 def myMethod() {
   //Fail here
