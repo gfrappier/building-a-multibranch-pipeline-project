@@ -19,12 +19,12 @@ pipeline {
                 }
             }
         }
-        // stage('Build') {
-        //     steps {
-        //         //sh 'npm run build'
-        //         //echo CustomMessages.Msg2
-        //     }
-        // }
+        stage('Build') {
+            steps {
+                //sh 'npm run build'
+                echo constants.Messages.Msg2
+            }
+        }
         // stage('Test') {
         //     steps {
         //         //sh './jenkins/scripts/test.sh'
