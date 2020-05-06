@@ -14,6 +14,7 @@ pipeline {
                 script{
                     def constants = load("./jenkins/scripts/Constants.groovy")
                     echo constants.SingleMessage
+                    echo constants.Messages.Msg1
                     //echo msg.Msg1
                 }
             }
