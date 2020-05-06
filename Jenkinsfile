@@ -26,7 +26,9 @@ pipeline {
         stage('Build') {
             steps {
                 //sh 'npm run build'
-                echo constants.Messages.Msg2
+                script {
+                    echo constants.Messages.Msg2
+                }
             }
         }
         // stage('Test') {
