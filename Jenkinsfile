@@ -13,7 +13,8 @@ pipeline {
                 //sh 'npm install'
                 script{
                     def test = load("./jenkins/scripts/Messages.groovy")
-                    echo test.Msg1
+                    def msg = test.newInstance()
+                    echo msg.Msg1
                 }
             }
         }
