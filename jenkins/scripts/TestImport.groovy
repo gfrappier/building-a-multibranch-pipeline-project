@@ -1,4 +1,4 @@
-import Constants
+import ./Constants
 
 def myMethod() {
   //Fail here
