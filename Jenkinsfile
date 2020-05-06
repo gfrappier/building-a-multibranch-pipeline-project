@@ -18,7 +18,7 @@ pipeline {
                     echo constants.SingleMessage
                     echo constants.Messages.Msg1
                     def testimport = load("./jenkins/scripts/TestImport.groovy")
-                    testimport.MyMethod()
+                    testimport.myMethod()
                     //echo msg.Msg1
                 }
             }
