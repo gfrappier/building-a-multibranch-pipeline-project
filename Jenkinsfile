@@ -12,8 +12,8 @@ pipeline {
             steps {
                 //sh 'npm install'
                 script{
-                    CustomMessages = load("./jenkins/scripts/Messages.groovy")
-                    echo CustomMessages.Msg1
+                    def test = load("./jenkins/scripts/Messages.groovy")
+                    echo test.Msg1
                 }
             }
         }
