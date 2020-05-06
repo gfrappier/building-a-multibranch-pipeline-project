@@ -12,67 +12,58 @@ pipeline {
     stages {
         stage('Install') {
             steps {
-                //sh 'npm install'
-                script{
-                    constants = load("./jenkins/scripts/Constants.groovy")
-                    echo constants.SingleMessage
-                    echo constants.Messages.Msg1
-                    def testimport = load("./jenkins/scripts/TestImport.groovy")
-                    testimport.myMethod()
-                    //echo msg.Msg1
-                }
+                sh 'npm install'
+               
             }
         }
         stage('Build') {
             steps {
-                //sh 'npm run build'
-                script {
-                    echo constants.Messages.Msg2
-                }
+                sh 'npm run build'
+                
             }
         }
-        // stage('Test') {
-        //     steps {
-        //         //sh './jenkins/scripts/test.sh'
-        //         //echo CustomMessages.Msg3
-        //     }
-        // }
-        // stage('Run Snyk') {
-        //     when {
-        //         branch 'production'
-        //     }
-        //     steps {
-        //         sh './jenkins/scripts/snyk.sh'
-        //     }
-        // }
-        // stage('Run Certifiers') {
-        //     when {
-        //         branch 'production'
-        //     }
-        //     steps {
-        //         sh './jenkins/scripts/certifiers.sh'
-        //     }
-        // }
-        // stage('Deploy NPM Private') {
-        //     when {
-        //         branch 'development'
-        //     }
-        //     steps {
-        //         sh './jenkins/scripts/deliver-for-development.sh'
-        //         sh './jenkins/scripts/run-snyk.sh'
-        //         archiveArtifacts '*.tgz'
-        //     }
-        // }
-        // stage('Deploy NPM Public') {
-        //     when {
-        //         branch 'production'
-        //     }
-        //     steps {
-        //         sh './jenkins/scripts/deploy-for-production.sh'
-        //         sh './jenkins/scripts/run-snyk.sh'
-        //         archiveArtifacts '*.tgz'
-        //     }
-        // }
+        stage('Test') {
+            steps {
+                sh './jenkins/scripts/test.sh'
+                
+            }
+        }
+        stage('Run Snyk') {
+            when {
+                branch 'production'
+            }
+            steps {
+                sh './jenkins/scripts/snyk.sh'
+            }
+        }
+        stage('Run Certifiers') {
+            when {
+                branch 'production'
+            }
+            steps {
+                sh './jenkins/scripts/certifiers.sh'
+            }
+        }
+        stage('Deploy NPM Private') {
+            when {
+                branch 'development'
+            }
+            steps {
+                sh './jenkins/scripts/deliver-for-development.sh'
+                sh './jenkins/scripts/run-snyk.sh'
+                archiveArtifacts '*.tgz'
+            }
+        }
+        stage('Deploy NPM Public') {
+            when {
+                branch 'production'
+            }
+            steps {
+                sh './jenkins/scripts/deploy-for-production.sh'
+                sh './jenkins/scripts/run-snyk.sh'
+                archiveArtifacts '*.tgz'
+            }
+        }
     }
 
     options {
