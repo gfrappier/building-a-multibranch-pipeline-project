@@ -1,8 +1,8 @@
-import 'Constants.groovy'
+def constants = load 'Constants.groovy'
 
 def myMethod() {
   //Fail here
-  println Constants.SingleMessage
+  println constants.SingleMessage
 }
 
 return this
