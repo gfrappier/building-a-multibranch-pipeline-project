@@ -1,4 +1,4 @@
-import ./Constants
+import 'Constants.groovy'
 
 def myMethod() {
   //Fail here
