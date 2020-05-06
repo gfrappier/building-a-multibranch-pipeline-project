@@ -1,0 +1,1 @@
+def Messages = map ["Msg1": "Test message 1", "Msg2": "Test message 2"]

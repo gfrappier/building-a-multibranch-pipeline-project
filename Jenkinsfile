@@ -11,6 +11,10 @@ pipeline {
         stage('Install') {
             steps {
                 sh 'npm install'
+                script{
+                    Messages = load("./jenkins/scripts/Messages.groovy")
+                    echo Messages.Msg1
+                }
             }
         }
         stage('Build') {
