@@ -50,7 +50,6 @@ pipeline {
             }
             steps {
                 sh './jenkins/scripts/deliver-for-development.sh'
-                sh './jenkins/scripts/run-snyk.sh'
                 archiveArtifacts '*.tgz'
             }
         }
@@ -60,7 +59,6 @@ pipeline {
             }
             steps {
                 sh './jenkins/scripts/deploy-for-production.sh'
-                sh './jenkins/scripts/run-snyk.sh'
                 archiveArtifacts '*.tgz'
             }
         }
