@@ -23,6 +23,12 @@ pipeline {
                 sh './jenkins/scripts/test.sh'
             }
         }
+		stage('SonarQube analysis') {
+				def scannerHome = tool 'SonarScanner 4.0';
+				withSonarQubeEnv('http://localhost:9000/') { // If you have configured more than one global server connection, you can specify its name
+				sh "${scannerHome}/bin/sonar-scanner"
+			}
+		}
         stage('Deploy Private') {
             when {
                 branch 'development'
