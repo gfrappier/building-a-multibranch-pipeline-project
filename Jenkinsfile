@@ -26,7 +26,7 @@ pipeline {
 		stage('SonarQube analysis') {
 			steps {
 				// def scannerHome = tool 'SonarScanner 4.0';
-				withSonarQubeEnv('http://localhost:9000/') {
+				withSonarQubeEnv('SonarQube') {
 				    sh "${scannerHome}/bin/sonar-scanner"
 			    }
 			}
